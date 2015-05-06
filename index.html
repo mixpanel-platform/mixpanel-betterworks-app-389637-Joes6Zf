@@ -49,6 +49,8 @@
       var eventSelect = $('#eventSelect').MPEventSelect();
       var propSelect  = $('#propSelect').MPPropertySelect();
       var dateSelect  = $('#dateSelect').MPDatepicker();
+      
+      
 
       var runQuery = function() {
         var eventName = eventSelect.MPEventSelect('value'),
@@ -59,7 +61,8 @@
                 where = 'defined (properties["'+propName+'"])'
         
             segData = MP.api.segment(eventName, propName, {
-              from: moment().subtract(24, 'months'), 
+              from: dateRange.from,
+              to:dateRange.to,
               unit: unit, 
               limit:1000, 
               where: where
