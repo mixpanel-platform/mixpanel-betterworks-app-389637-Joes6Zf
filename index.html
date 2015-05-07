@@ -35,6 +35,7 @@
   <body class="mixpanel-platform-body">
     <div class="mixpanel-platform-section">
       <div id="eventSelect" style="float: left;"></div>
+      <!--<button type="button" id="custom" class="mixpanel-platform-button" style="margin-left: 10px; width: auto;" value="$custom_event:53013">Nudge Event</button>-->
       <div id="by" class="mixpanel-platform-label" style="margin-left: 10px; display: none;">by</div>
       <div id="propSelect" style="float: left;"></div>
       <div id="dateSelect" style="float: right;"></div>
@@ -46,15 +47,15 @@
     </div>
 
     <script>
+
       var eventSelect = $('#eventSelect').MPEventSelect();
       var propSelect  = $('#propSelect').MPPropertySelect();
       var dateSelect  = $('#dateSelect').MPDatepicker();
-      
-      
 
       var runQuery = function() {
-        var eventName = eventSelect.MPEventSelect('value'),
-            propName  = propSelect.MPPropertySelect('value'),
+        
+        var eventName = eventSelect.MPEventSelect('value')
+        var propName  = propSelect.MPPropertySelect('value'),
             dateRange = dateSelect.MPDatepicker('value');
             
         unit = 'month'    
@@ -89,6 +90,8 @@
         $("#by").show();
         runQuery();
       });
+      
+      
       propSelect.on('change', runQuery);
       dateSelect.on('change', runQuery);
     </script>
